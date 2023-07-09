@@ -42,3 +42,5 @@ export class TextDB {
     return result
   }
 }
+
+window.TextDB = TextDB
