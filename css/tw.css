@@ -1,0 +1,29 @@
+.f {
+  display: flex;
+}
+
+.fc {
+  display: flex;
+  flex-direction: column;
+}
+
+.jc {
+  display: flex;
+  justify: center;
+}
+
+.ic {
+  display: flex;
+  items: center;
+}
+
+.c {
+  display: flex;
+  items: center;
+  justify: center;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
