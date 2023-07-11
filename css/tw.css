@@ -9,18 +9,18 @@
 
 .jc {
   display: flex;
-  justify: center;
+  justify-content: center;
 }
 
 .ic {
   display: flex;
-  items: center;
+  align-items: center;
 }
 
 .c {
   display: flex;
-  items: center;
-  justify: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .page {
