@@ -102,3 +102,8 @@
 .c-m {
   cursor: move;
 }
+
+.t {
+  transition-property: all;
+  transition-duration: 300ms;
+}
