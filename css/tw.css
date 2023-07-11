@@ -94,3 +94,11 @@
 .o-h {
   overflow: hidden;
 }
+
+.c-p {
+  cursor: pointer;
+}
+
+.c-m {
+  cursor: move;
+}
