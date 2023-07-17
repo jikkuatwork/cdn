@@ -107,3 +107,15 @@
   transition-property: all;
   transition-duration: 300ms;
 }
+
+.bg-dark-100 {
+  background-color: #28282e;
+}
+
+.bg-dark-200 {
+  background-color: #151519;
+}
+
+.bg-dark-200 {
+  background-color: #111113;
+}
