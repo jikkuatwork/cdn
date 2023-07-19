@@ -1,7 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "minify": "node minify.js"
   },
   "devDependencies": {
     "terser": "^5.19.1",
