@@ -1,55 +1,96 @@
+var _a;
 export class Cupboard {
-  constructor(keys) {
-    this.keys = keys
-  }
-
-  url = action => `https://shelf.toolbomber.com/api/${action}`
-
-  append = async item => this.keys.append && this.trigger("append", item)
-
-  replace = async item => this.keys.replace && this.trigger("replace", item)
-
-  clear = async () => this.keys.replace && this.trigger("replace", [])
-
-  read = async () => this.get()
-
-  get = async () => {
-    return await fetch(`${this.url("read")}/?key=${this.keys.read}`)
-      .then(r => r.json())
-      .catch(e => console.log(e))
-  }
-
-  static create = async seed =>
-    new Cupboard((await Cupboard.generateKeys(seed)).keys)
-
-  static generateKeys = async seed =>
-    fetch(new Cupboard().url("create"), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        seed,
-      }),
-    })
-      .then(response => response.json())
-      .catch(error => {
-        console.error("Error:", error)
-      })
-
-  trigger = async (action, data) =>
-    fetch(this.url(action), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        key: this.keys[action],
-        data: data,
-      }),
-    })
-      .then(response => response.json())
-      .catch(error => {
-        console.error("Error:", error)
-      })
+    constructor(seed, keys) {
+        this.read = async () => {
+            let response = {};
+            if (this.keys.read) {
+                response = await Cupboard.get("read", { key: this.keys.read });
+                if (response.error) {
+                    throw new Error("Unauthorized: Bad key");
+                }
+                else {
+                    return response.payload;
+                }
+            }
+            else {
+                throw new Error("Unauthorized: `read` key missing");
+            }
+        };
+        this.append = async (item) => {
+            let response = {};
+            if (this.keys.append) {
+                response = await Cupboard.post("append", {
+                    key: this.keys.append,
+                    data: item,
+                });
+                if (response.error) {
+                    throw new Error("Unauthorized: Bad key");
+                }
+                else {
+                    return response.payload;
+                }
+            }
+            else {
+                throw new Error("Unauthorized: `append` key missing");
+            }
+        };
+        this.replace = async (item) => {
+            let response = {};
+            if (this.keys.replace) {
+                response = await Cupboard.post("replace", {
+                    key: this.keys.replace,
+                    data: item,
+                });
+                if (response.error) {
+                    throw new Error("Unauthorized: Bad key");
+                }
+                else {
+                    return response.payload;
+                }
+            }
+            else {
+                throw new Error("Unauthorized: `replace` key missing");
+            }
+        };
+        this.seed = seed;
+        this.keys = keys;
+    }
 }
+_a = Cupboard;
+Cupboard.API_URL = "http://localhost:3000/api";
+Cupboard.SHORT_HASH_LENGTH = 6;
+Cupboard.generateKeys = async (seed) => await Cupboard.post("create", { seed });
+Cupboard.post = async (route, parameters) => {
+    const url = `${Cupboard.API_URL}/${route}`;
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(parameters),
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+    }
+};
+Cupboard.get = async (route, parameters) => {
+    const query = new URLSearchParams(parameters).toString();
+    const url = `${Cupboard.API_URL}/${route}?${query}`;
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+    }
+};
