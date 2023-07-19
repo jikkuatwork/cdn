@@ -1,6 +1,6 @@
 var _a;
 export class Cupboard {
-    constructor(seed, keys) {
+    constructor(keys) {
         this.read = async () => {
             let response = {};
             if (this.keys.read) {
@@ -67,7 +67,6 @@ export class Cupboard {
                 throw new Error("Unauthorized: `replace` key missing");
             }
         };
-        this.seed = seed;
         this.keys = keys;
     }
 }

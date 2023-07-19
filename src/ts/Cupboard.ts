@@ -14,11 +14,9 @@ export class Cupboard {
   static API_URL = "https://shelf.toolbomber.com/api"
   static SHORT_HASH_LENGTH = 6
 
-  seed: string
   keys: Keys
 
-  constructor(seed: string, keys: Keys) {
-    this.seed = seed
+  constructor(keys: Keys) {
     this.keys = keys
   }
 
