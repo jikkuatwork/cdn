@@ -3,7 +3,7 @@ interface Keys {
 }
 
 export class Cupboard {
-  static API_URL = "http://localhost:3000/api" //"https://shelf.toolbomber.com/api"
+  static API_URL = "http://localhost:3000/api"
   static SHORT_HASH_LENGTH = 6
 
   seed: string
