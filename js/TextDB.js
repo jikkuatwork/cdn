@@ -1,73 +1,54 @@
+var _a;
 export class TextDB {
-  static API_URL = "https://textdb.dev/api/data"
-
-  constructor(key) {
-    this.key = key || this.randomKey(3)
-  }
-
-  static read = async key => new TextDB(key).read()
-
-  static write = async (key, text) => new TextDB(key).write(text)
-
-  static url = key => new TextDB(key).url()
-
-  static randomKey = () => new TextDB().randomKey()
-
-  static getReadOnlyKey = async key => new TextDB(key).getReadOnlyKey()
-
-  static getReadOnlyLink = async key => new TextDB(key).getReadOnlyLink()
-
-  getReadOnlyLink = async () =>
-    `${TextDB.API_URL}/${await this.getReadOnlyKey()}`
-
-  getReadOnlyKey = async () => {
-    const PAGE_URL = "https://textdb.dev/data"
-
-    const extractReadOnlyKey = html => {
-      const parser = new DOMParser()
-      const doc = parser.parseFromString(html, "text/html")
-      const linkElement = doc.querySelector(".data-api a")
-      if (linkElement) {
-        const href = linkElement.href
-        const parts = href.split("/")
-        return parts[parts.length - 1]
-      }
-      return null
+    constructor(key) {
+        this.getReadOnlyLink = async () => {
+            return `${TextDB.API_URL}/${await this.getReadOnlyKey()}`;
+        };
+        this.getReadOnlyKey = async () => {
+            const PAGE_URL = "https://textdb.dev/data";
+            const extractReadOnlyKey = (html) => {
+                const regex = /<section class="data-api">[\s\S]*?<a href="https:\/\/textdb\.dev\/data\/([^"]*)">[\s\S]*?<\/section>/;
+                const match = html.match(regex);
+                if (match) {
+                    return match[1];
+                }
+                return null;
+            };
+            const response = await fetch(`${PAGE_URL}/${this.key}`, {
+                method: "GET",
+            });
+            return extractReadOnlyKey(await response.text());
+        };
+        this.read = async () => {
+            const response = await fetch(`${TextDB.API_URL}/${this.key}`);
+            return response.text();
+        };
+        this.write = async (text) => {
+            return fetch(`${TextDB.API_URL}/${this.key}`, {
+                body: text,
+                headers: { "Content-Type": "text/plain" },
+                method: "POST",
+            });
+        };
+        this.url = () => TextDB.API_URL + "/" + this.key;
+        this.randomKey = (n = 3) => {
+            let chars = "abcdefghjkmnpqrstuvwxyz";
+            let result = "";
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < n; j++) {
+                    result += chars[Math.floor(Math.random() * chars.length)];
+                }
+                if (i < 2)
+                    result += "-";
+            }
+            return result;
+        };
+        this.key = key || this.randomKey(3);
     }
-
-    return await fetch(`${PAGE_URL}/${this.key}`, {
-      method: "GET",
-    })
-      .then(r => r.text())
-      .then(t => extractReadOnlyKey(t))
-  }
-
-  read = async () => {
-    return await fetch(`${TextDB.API_URL}/${this.key}`)
-      .then(r => r.text())
-      .then(r => r)
-  }
-
-  write = async text => {
-    return fetch(`${TextDB.API_URL}/${this.key}`, {
-      body: text,
-      headers: { "Content-Type": "text/plain" },
-      method: "POST",
-    })
-  }
-
-  url = () => TextDB.API_URL + "/" + this.key
-
-  randomKey = (n = 3) => {
-    let chars = "abcdefghjkmnpqrstuvwxyz"
-    let result = ""
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < n; j++) {
-        result += chars[Math.floor(Math.random() * chars.length)]
-      }
-      if (i < 2) result += "-"
-    }
-
-    return result
-  }
 }
+_a = TextDB;
+TextDB.API_URL = "https://textdb.dev/api/data";
+TextDB.read = async (key) => new TextDB(key).read();
+TextDB.write = async (key, text) => new TextDB(key).write(text);
+TextDB.url = (key) => new TextDB(key).url();
+TextDB.randomKey = () => new TextDB().randomKey();

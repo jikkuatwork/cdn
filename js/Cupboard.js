@@ -24,7 +24,7 @@ export class Cupboard {
                     throw new Error("Unauthorized: Bad key");
                 }
                 else {
-                    return response.meta.updatedAt;
+                    return response.meta?.updatedAt;
                 }
             }
             else {
@@ -72,7 +72,7 @@ export class Cupboard {
     }
 }
 _a = Cupboard;
-Cupboard.API_URL = "http://localhost:3000/api";
+Cupboard.API_URL = "https://shelf.toolbomber.com/api";
 Cupboard.SHORT_HASH_LENGTH = 6;
 Cupboard.generateKeys = async (seed) => await Cupboard.post("create", { seed });
 Cupboard.post = async (route, parameters) => {

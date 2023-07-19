@@ -2,8 +2,16 @@ interface Keys {
   [key: string]: string
 }
 
+interface ResponseType {
+  error?: string
+  payload?: any
+  meta?: {
+    updatedAt?: number
+  }
+}
+
 export class Cupboard {
-  static API_URL = "http://localhost:3000/api"
+  static API_URL = "https://shelf.toolbomber.com/api"
   static SHORT_HASH_LENGTH = 6
 
   seed: string
@@ -15,7 +23,7 @@ export class Cupboard {
   }
 
   read = async () => {
-    let response = {}
+    let response: ResponseType = {}
 
     if (this.keys.read) {
       response = await Cupboard.get("read", { key: this.keys.read })
@@ -31,7 +39,7 @@ export class Cupboard {
   }
 
   updatedAt = async () => {
-    let response = {}
+    let response: ResponseType = {}
 
     if (this.keys.read) {
       response = await Cupboard.get("read", { key: this.keys.read })
@@ -39,7 +47,7 @@ export class Cupboard {
       if (response.error) {
         throw new Error("Unauthorized: Bad key")
       } else {
-        return response.meta.updatedAt
+        return response.meta?.updatedAt
       }
     } else {
       throw new Error("Unauthorized: `read` key missing")
@@ -47,7 +55,7 @@ export class Cupboard {
   }
 
   append = async (item: any) => {
-    let response = {}
+    let response: ResponseType = {}
 
     if (this.keys.append) {
       response = await Cupboard.post("append", {
@@ -66,7 +74,7 @@ export class Cupboard {
   }
 
   replace = async (item: any) => {
-    let response = {}
+    let response: ResponseType = {}
 
     if (this.keys.replace) {
       response = await Cupboard.post("replace", {
