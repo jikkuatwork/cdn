@@ -73,7 +73,7 @@ export class Cupboard {
     }
   }
 
-  replace = async (item: any) => {
+  replace = async (item: any = null) => {
     let response: ResponseType = {}
 
     if (this.keys.replace) {

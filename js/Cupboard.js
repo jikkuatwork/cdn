@@ -49,7 +49,7 @@ export class Cupboard {
                 throw new Error("Unauthorized: `append` key missing");
             }
         };
-        this.replace = async (item) => {
+        this.replace = async (item = null) => {
             let response = {};
             if (this.keys.replace) {
                 response = await Cupboard.post("replace", {
