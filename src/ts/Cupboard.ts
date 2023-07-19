@@ -30,6 +30,22 @@ export class Cupboard {
     }
   }
 
+  updatedAt = async () => {
+    let response = {}
+
+    if (this.keys.read) {
+      response = await Cupboard.get("read", { key: this.keys.read })
+
+      if (response.error) {
+        throw new Error("Unauthorized: Bad key")
+      } else {
+        return response.meta.updatedAt
+      }
+    } else {
+      throw new Error("Unauthorized: `read` key missing")
+    }
+  }
+
   append = async (item: any) => {
     let response = {}
 
