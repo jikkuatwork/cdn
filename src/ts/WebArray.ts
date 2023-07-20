@@ -10,7 +10,7 @@ interface ResponseType {
   }
 }
 
-export class Cupboard {
+export class WebArray {
   static API_URL = "https://shelf.toolbomber.com/api"
   static SHORT_HASH_LENGTH = 6
 
@@ -24,7 +24,7 @@ export class Cupboard {
     let response: ResponseType = {}
 
     if (this.keys.read) {
-      response = await Cupboard.get("read", { key: this.keys.read })
+      response = await WebArray.get("read", { key: this.keys.read })
 
       if (response.error) {
         throw new Error("Unauthorized: Bad key")
@@ -40,7 +40,7 @@ export class Cupboard {
     let response: ResponseType = {}
 
     if (this.keys.read) {
-      response = await Cupboard.get("read", { key: this.keys.read })
+      response = await WebArray.get("read", { key: this.keys.read })
 
       if (response.error) {
         throw new Error("Unauthorized: Bad key")
@@ -56,7 +56,7 @@ export class Cupboard {
     let response: ResponseType = {}
 
     if (this.keys.append) {
-      response = await Cupboard.post("append", {
+      response = await WebArray.post("append", {
         key: this.keys.append,
         data: item,
       })
@@ -75,7 +75,7 @@ export class Cupboard {
     let response: ResponseType = {}
 
     if (this.keys.replace) {
-      response = await Cupboard.post("replace", {
+      response = await WebArray.post("replace", {
         key: this.keys.replace,
         data: item,
       })
@@ -91,10 +91,10 @@ export class Cupboard {
   }
 
   static generateKeys = async (seed: string) =>
-    await Cupboard.post("create", { seed })
+    await WebArray.post("create", { seed })
 
   static post = async (route: string, parameters: object) => {
-    const url = `${Cupboard.API_URL}/${route}`
+    const url = `${WebArray.API_URL}/${route}`
 
     try {
       const response = await fetch(url, {
@@ -118,7 +118,7 @@ export class Cupboard {
       parameters as Record<string, string>
     ).toString()
 
-    const url = `${Cupboard.API_URL}/${route}?${query}`
+    const url = `${WebArray.API_URL}/${route}?${query}`
 
     try {
       const response = await fetch(url, {
