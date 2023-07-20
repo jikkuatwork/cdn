@@ -11,7 +11,7 @@ interface ResponseType {
 }
 
 export class WebArray {
-  static API_URL = "https://shelf.toolbomber.com/api"
+  static API_URL = "https://webarray.toolbomber.com/api"
   static SHORT_HASH_LENGTH = 6
 
   keys: Keys

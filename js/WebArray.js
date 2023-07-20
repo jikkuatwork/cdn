@@ -71,7 +71,7 @@ export class WebArray {
     }
 }
 _a = WebArray;
-WebArray.API_URL = "https://shelf.toolbomber.com/api";
+WebArray.API_URL = "https://webarray.toolbomber.com/api";
 WebArray.SHORT_HASH_LENGTH = 6;
 WebArray.create = async (seed) => {
     const keys = await WebArray.post("create", { seed });
