@@ -73,6 +73,10 @@ export class WebArray {
 _a = WebArray;
 WebArray.API_URL = "https://shelf.toolbomber.com/api";
 WebArray.SHORT_HASH_LENGTH = 6;
+WebArray.create = async (seed) => {
+    const keys = await WebArray.post("create", { seed });
+    return new WebArray(keys);
+};
 WebArray.generateKeys = async (seed) => await WebArray.post("create", { seed });
 WebArray.post = async (route, parameters) => {
     const url = `${WebArray.API_URL}/${route}`;

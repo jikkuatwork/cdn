@@ -90,6 +90,11 @@ export class WebArray {
     }
   }
 
+  static create = async (seed: string) => {
+    const keys = await WebArray.post("create", { seed })
+    return new WebArray(keys)
+  }
+
   static generateKeys = async (seed: string) =>
     await WebArray.post("create", { seed })
 
