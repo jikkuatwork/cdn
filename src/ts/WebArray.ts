@@ -107,7 +107,7 @@ export class WebArray {
     return new WebArray(keys)
   }
 
-  static generateKeys = async (seed: string) =>
+  static generateKeys = async (seed: string = WebArray.randomSeed()) =>
     await WebArray.post("create", { seed })
 
   static post = async (route: string, parameters: object) => {
@@ -152,4 +152,9 @@ export class WebArray {
       console.error("There was a problem with the fetch operation:", error)
     }
   }
+}
+
+if (typeof window !== "undefined") {
+  // @ts-ignore
+  window.WebArray = WebArray
 }

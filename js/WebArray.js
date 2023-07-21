@@ -87,7 +87,7 @@ WebArray.create = async (seed = WebArray.randomSeed()) => {
     keys["seed"] = seed;
     return new WebArray(keys);
 };
-WebArray.generateKeys = async (seed) => await WebArray.post("create", { seed });
+WebArray.generateKeys = async (seed = WebArray.randomSeed()) => await WebArray.post("create", { seed });
 WebArray.post = async (route, parameters) => {
     const url = `${WebArray.API_URL}/${route}`;
     try {
@@ -122,3 +122,7 @@ WebArray.get = async (route, parameters) => {
         console.error("There was a problem with the fetch operation:", error);
     }
 };
+if (typeof window !== "undefined") {
+    // @ts-ignore
+    window.WebArray = WebArray;
+}
