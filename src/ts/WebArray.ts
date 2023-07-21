@@ -90,8 +90,20 @@ export class WebArray {
     }
   }
 
-  static create = async (seed: string) => {
+  static randomSeed = () => {
+    let seed = ""
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    const charactersLength = characters.length
+    for (let i = 0; i < 12; i++) {
+      seed += characters.charAt(Math.floor(Math.random() * charactersLength))
+    }
+    return seed.replace(/(.{3})/g, "$1-").slice(0, -1)
+  }
+
+  static create = async (seed: string = WebArray.randomSeed()) => {
     const keys = await WebArray.post("create", { seed })
+    keys["seed"] = seed
     return new WebArray(keys)
   }
 
