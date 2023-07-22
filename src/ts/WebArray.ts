@@ -2,7 +2,7 @@ interface Keys {
   [key: string]: string
 }
 
-interface ResponseType {
+interface ResponseTypeInterface {
   error?: string
   payload?: any
   meta?: {
@@ -10,7 +10,7 @@ interface ResponseType {
   }
 }
 
-export class WebArray {
+class WebArray {
   static API_URL = "https://webarray.toolbomber.com/api"
   static SHORT_HASH_LENGTH = 6
 
@@ -21,7 +21,7 @@ export class WebArray {
   }
 
   read = async () => {
-    let response: ResponseType = {}
+    let response: ResponseTypeInterface = {}
 
     if (this.keys.read) {
       response = await WebArray.get("read", { key: this.keys.read })
@@ -37,7 +37,7 @@ export class WebArray {
   }
 
   updatedAt = async () => {
-    let response: ResponseType = {}
+    let response: ResponseTypeInterface = {}
 
     if (this.keys.read) {
       response = await WebArray.get("read", { key: this.keys.read })
@@ -53,7 +53,7 @@ export class WebArray {
   }
 
   append = async (item: any) => {
-    let response: ResponseType = {}
+    let response: ResponseTypeInterface = {}
 
     if (this.keys.append) {
       response = await WebArray.post("append", {
@@ -72,7 +72,7 @@ export class WebArray {
   }
 
   replace = async (item: any = null) => {
-    let response: ResponseType = {}
+    let response: ResponseTypeInterface = {}
 
     if (this.keys.replace) {
       response = await WebArray.post("replace", {
