@@ -1,5 +1,8 @@
+"use strict";
 var _a;
-export class WebArray {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebArray = void 0;
+class WebArray {
     constructor(keys) {
         this.read = async () => {
             let response = {};
@@ -70,6 +73,7 @@ export class WebArray {
         this.keys = keys;
     }
 }
+exports.WebArray = WebArray;
 _a = WebArray;
 WebArray.API_URL = "https://webarray.toolbomber.com/api";
 WebArray.SHORT_HASH_LENGTH = 6;

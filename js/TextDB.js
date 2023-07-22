@@ -1,5 +1,8 @@
+"use strict";
 var _a;
-export class TextDB {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TextDB = void 0;
+class TextDB {
     constructor(key) {
         this.getReadOnlyLink = async () => {
             return `${TextDB.API_URL}/${await this.getReadOnlyKey()}`;
@@ -46,6 +49,7 @@ export class TextDB {
         this.key = key || this.randomKey(3);
     }
 }
+exports.TextDB = TextDB;
 _a = TextDB;
 TextDB.API_URL = "https://textdb.dev/api/data";
 TextDB.read = async (key) => new TextDB(key).read();
