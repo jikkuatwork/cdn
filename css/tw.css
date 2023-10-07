@@ -28,8 +28,16 @@
   min-height: 100vh;
 }
 
-.top-light {
+.top-light-100 {
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.top-light-200 {
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.top-light-300 {
+  box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.6);
 }
 
 .s {
