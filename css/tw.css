@@ -28,6 +28,10 @@
   min-height: 100vh;
 }
 
+.top-light {
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.6);
+}
+
 .s {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -91,15 +95,18 @@
   border-radius: 9999px;
 }
 
-.o-h {
+.o-h,
+.oh {
   overflow: hidden;
 }
 
-.c-p {
+.c-p,
+.cp {
   cursor: pointer;
 }
 
-.c-m {
+.c-m,
+.cm {
   cursor: move;
 }
 
