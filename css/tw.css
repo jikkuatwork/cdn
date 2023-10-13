@@ -134,3 +134,58 @@
 .bg-dark-200 {
   background-color: #111113;
 }
+
+.tw-coloured-shadow {
+  position: relative;
+  display: inline-block;
+  &:nth-of-type(1) {
+    background: center / cover no-repeat;
+  }
+  &:nth-of-type(2) {
+    background: center / cover no-repeat;
+  }
+  &:nth-of-type(3) {
+    background: center / cover no-repeat;
+  }
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: 60%;
+    top: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+  }
+  &:after {
+    position: relative;
+  }
+  &:before {
+    position: absolute;
+    filter: blur(20px);
+    top: 20px;
+  }
+}
+
+.tw-text-heading {
+  font-size: 90px;
+  font-family: Inter;
+  font-weight: 900;
+  line-height: 106px;
+  letter-spacing: -0.03em;
+}
+
+.tw-text-subtitle {
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.tw-text-comfortable {
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.017em;
+}
