@@ -189,3 +189,11 @@
   line-height: 30px;
   letter-spacing: -0.017em;
 }
+
+.tw-max-w-sm {
+  max-width: 40rem;
+}
+
+.tw-min-w-sm {
+  min-width: 40rem;
+}
