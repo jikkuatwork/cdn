@@ -168,6 +168,11 @@
   top: 20px;
 }
 
+.tw-bleed {
+  filter: blur(20px);
+  scale: 1.01;
+}
+
 .tw-text-heading {
   font-size: 90px;
   font-family: Inter;
