@@ -213,3 +213,18 @@
 .tw-min-w-sm {
   min-width: 40rem;
 }
+
+.sn {
+  user-select: none;
+}
+
+.box {
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  background-color: rgba(252, 211, 77, 0.8);
+  transition: background-color 0.3s ease;
+}
+
+.box:hover {
+  background-color: rgba(252, 211, 77, 1);
+}
