@@ -150,15 +150,19 @@
   position: relative;
   display: inline-block;
 }
+
 .tw-coloured-shadow:nth-of-type(1) {
   background: center/cover no-repeat;
 }
+
 .tw-coloured-shadow:nth-of-type(2) {
   background: center/cover no-repeat;
 }
+
 .tw-coloured-shadow:nth-of-type(3) {
   background: center/cover no-repeat;
 }
+
 .tw-coloured-shadow:before,
 .tw-coloured-shadow:after {
   content: "";
@@ -170,9 +174,11 @@
   background: inherit;
   border-radius: inherit;
 }
+
 .tw-coloured-shadow:after {
   position: relative;
 }
+
 .tw-coloured-shadow:before {
   position: absolute;
   filter: blur(20px);
@@ -227,4 +233,204 @@
 
 .box:hover {
   background-color: rgba(252, 211, 77, 1);
+}
+
+.tw-text-100 {
+  font-size: 0.25rem;
+}
+
+.tw-text-200 {
+  font-size: 0.5rem;
+}
+
+.tw-text-300 {
+  font-size: 0.75rem;
+}
+
+.tw-text-400 {
+  font-size: 1rem;
+}
+
+.tw-text-500 {
+  font-size: 1.25rem;
+}
+
+.tw-text-600 {
+  font-size: 1.5rem;
+}
+
+.tw-text-700 {
+  font-size: 1.75rem;
+}
+
+.tw-text-800 {
+  font-size: 2rem;
+}
+
+.tw-text-900 {
+  font-size: 2.25rem;
+}
+
+.tw-text-1000 {
+  font-size: 2.5rem;
+}
+
+.tw-text-1100 {
+  font-size: 2.75rem;
+}
+
+.tw-text-1200 {
+  font-size: 3rem;
+}
+
+.tw-text-1300 {
+  font-size: 3.25rem;
+}
+
+.tw-text-1400 {
+  font-size: 3.5rem;
+}
+
+.tw-text-1500 {
+  font-size: 3.75rem;
+}
+
+.tw-text-1600 {
+  font-size: 4rem;
+}
+
+.tw-text-1700 {
+  font-size: 4.25rem;
+}
+
+.tw-text-1800 {
+  font-size: 4.5rem;
+}
+
+.tw-text-1900 {
+  font-size: 4.75rem;
+}
+
+.tw-text-2000 {
+  font-size: 5rem;
+}
+
+.tw-text-2100 {
+  font-size: 5.25rem;
+}
+
+.tw-text-2200 {
+  font-size: 5.5rem;
+}
+
+.tw-text-2300 {
+  font-size: 5.75rem;
+}
+
+.tw-text-2400 {
+  font-size: 6rem;
+}
+
+.tw-text-2500 {
+  font-size: 6.25rem;
+}
+
+.tw-text-2600 {
+  font-size: 6.5rem;
+}
+
+.tw-text-2700 {
+  font-size: 6.75rem;
+}
+
+.tw-text-2800 {
+  font-size: 7rem;
+}
+
+.tw-text-2900 {
+  font-size: 7.25rem;
+}
+
+.tw-text-3000 {
+  font-size: 7.5rem;
+}
+
+.tw-text-3100 {
+  font-size: 7.75rem;
+}
+
+.tw-text-3200 {
+  font-size: 8rem;
+}
+
+.tw-text-3300 {
+  font-size: 8.25rem;
+}
+
+.tw-text-3400 {
+  font-size: 8.5rem;
+}
+
+.tw-text-3500 {
+  font-size: 8.75rem;
+}
+
+.tw-text-3600 {
+  font-size: 9rem;
+}
+
+.tw-text-3700 {
+  font-size: 9.25rem;
+}
+
+.tw-text-3800 {
+  font-size: 9.5rem;
+}
+
+.tw-text-3900 {
+  font-size: 9.75rem;
+}
+
+.tw-text-4000 {
+  font-size: 10rem;
+}
+
+.tw-text-4100 {
+  font-size: 10.25rem;
+}
+
+.tw-text-4200 {
+  font-size: 10.5rem;
+}
+
+.tw-text-4300 {
+  font-size: 10.75rem;
+}
+
+.tw-text-4400 {
+  font-size: 11rem;
+}
+
+.tw-text-4500 {
+  font-size: 11.25rem;
+}
+
+.tw-text-4600 {
+  font-size: 11.5rem;
+}
+
+.tw-text-4700 {
+  font-size: 11.75rem;
+}
+
+.tw-text-4800 {
+  font-size: 12rem;
+}
+
+.tw-text-4900 {
+  font-size: 12.25rem;
+}
+
+.tw-text-5000 {
+  font-size: 12.5rem;
 }
