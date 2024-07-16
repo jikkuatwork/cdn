@@ -453,3 +453,23 @@
 .tw-bg-gray-100 {
   background-color: rgba(245, 245, 247, 1);
 }
+
+.mask-y {
+  mask-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 25%,
+    #ffffff 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.mask-x {
+  mask-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 25%,
+    #ffffff 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
