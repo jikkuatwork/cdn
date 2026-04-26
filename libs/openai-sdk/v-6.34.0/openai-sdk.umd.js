@@ -4,7 +4,7 @@
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.OpenAI = {}));
 })(this, (function (exports) {
-  /* OpenAI SDK Bundle - Generated 2026-04-17T06:48:04.271Z */
+  /* OpenAI SDK Bundle - Generated 2026-04-26T08:00:59.138Z */
 "use strict";
 var __bundleExports = (() => {
   var __defProp = Object.defineProperty;
