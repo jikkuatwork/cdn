@@ -5,8 +5,13 @@ Static CDN hosting small, self-contained libraries and assets for projects.
 - **Public URL**: <https://cdn.toolbomber.com/>
 - **Hosting**: Vercel (auto-deploys from `master` on push — no build step,
   files are served as-is)
-- **Source repo**: this repo (everything under `libs/`, `js/`, `css/`,
-  `logos/`, `pv-components/` is publicly fetchable)
+- **Source repo**: this repo (public on GitHub at
+  [jikkuatwork/cdn](https://github.com/jikkuatwork/cdn))
+- **Mirror**: jsDelivr automatically serves any public GitHub repo, so the
+  same artifacts are available at
+  `https://cdn.jsdelivr.net/gh/jikkuatwork/cdn@<ref>/<path>`. Useful when a
+  consumer's CSP doesn't allow `cdn.toolbomber.com` but does allow jsDelivr
+  (most curated allowlists do).
 
 ## Layout
 
@@ -21,12 +26,18 @@ libs/<name>/v-latest          → symlink to the newest v-X.Y.Z
 - `v-latest` is a symbolic link, not a copy — Vercel resolves it server-side.
 - Pin to `v-X.Y.Z` in production; use `v-latest` only for dev / one-off scripts.
 
-Example URLs:
+Example URLs (Vercel + jsDelivr serve the same content):
 
 ```
-https://cdn.toolbomber.com/libs/feed-stars/v-0.0.1/feed-stars.min.mjs
+# Vercel
+https://cdn.toolbomber.com/libs/feed-stars/v-0.0.2/feed-stars.min.mjs
 https://cdn.toolbomber.com/libs/feed-stars/v-latest/feed-stars.min.mjs
-https://cdn.toolbomber.com/libs/openai-sdk/v-6.34.0/openai-sdk.esm.min.js
+
+# jsDelivr (commit-pinned — cached forever)
+https://cdn.jsdelivr.net/gh/jikkuatwork/cdn@<sha>/libs/feed-stars/v-0.0.2/feed-stars.min.mjs
+
+# jsDelivr (branch ref — cached 12h)
+https://cdn.jsdelivr.net/gh/jikkuatwork/cdn@master/libs/feed-stars/v-0.0.2/feed-stars.min.mjs
 ```
 
 ### `js/`, `css/`, `pv-components/`, `logos/` — flat unversioned assets
